@@ -1,6 +1,6 @@
 # Infonation
 
-Welcome to infonation. A simple tool that provides users with general informatin about countries of their choosing.
+Welcome to infonation. A simple tool that provides users with general information about countries of their choosing.
 
 ## Installation
 
