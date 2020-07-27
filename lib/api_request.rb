@@ -3,6 +3,8 @@ require 'open-uri'
 require 'json'
 require 'pry'
 
+require_relative './country.rb'
+
 class APIRequest
     
     def request
@@ -21,15 +23,16 @@ class APIRequest
 
     def to_json
         #JSON parses the response body and returns the API response in JSON -- it will be easier to instantiate instances of Country
-        JSON.parse(self)
+        JSON.parse(self.request)
     end
 
     def make_countries
-        request.each do |country|
-
+        to_json.each do |country|
+            Country.new_from_json(country)
         end
     end
 end
 
-countries = APIRequest.new.request
+countries = APIRequest.new.make_countries
+
 binding.pry
