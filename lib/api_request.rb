@@ -9,7 +9,7 @@ class APIRequest
     
     def request
         # CURRENT URL: requests info for every country available but filters out everything except name, capital, and currencies (will add more attributes)
-        url = 'https://restcountries.eu/rest/v2/all?fields=name;capital;currencies'
+        url = 'https://restcountries.eu/rest/v2/all?fields=name;capital;currencies;languages;population;alpha3code'
 
 
         uri = URI.parse(url)
