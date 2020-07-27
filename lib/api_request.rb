@@ -33,6 +33,7 @@ class APIRequest
     end
 end
 
-countries = APIRequest.new.make_countries
+request = APIRequest.new
+countries = request.to_json
 
 binding.pry
