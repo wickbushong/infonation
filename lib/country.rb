@@ -9,7 +9,9 @@ class Country
     def initialize(name=nil, capital=nil, currencies=nil)
         @name = name
         @capital = capital
-        @currencies = currencies
+        @currencies = currencies.collect do |currency|
+            "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"
+        end
         @@all << self
     end
 
@@ -25,12 +27,11 @@ class Country
         )
     end
 
-    def currencies=(arr)
-        arr.collect do |currency|
-            binding.pry
-            "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"
-        end
-    end
+    # def currencies=(arr)
+    #     self[:currencies] = arr.collect do |currency|
+    #         "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"
+    #     end
+    # end
 
     def self.find_by_name(arg)
         self.all.find do |country|
