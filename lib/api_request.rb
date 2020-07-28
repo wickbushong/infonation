@@ -8,8 +8,8 @@ require_relative './country.rb'
 class APIRequest
     
     def request
-        # CURRENT URL: requests info for every country available but filters out everything except name, capital, and currencies (will add more attributes)
-        url = 'https://restcountries.eu/rest/v2/all?fields=name;capital;currencies;languages;population;alpha3code'
+        # CURRENT URL: requests info for every country with 'united' in the name -- will switch to 'all' later
+        url = 'https://restcountries.eu/rest/v2/name/united'
 
 
         uri = URI.parse(url)
@@ -33,7 +33,7 @@ class APIRequest
     end
 end
 
-request = APIRequest.new.make_countries
+united = APIRequest.new.make_countries
 
 
 binding.pry
