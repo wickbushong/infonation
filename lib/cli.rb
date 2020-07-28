@@ -82,7 +82,11 @@ class CLI
             puts "#{country.continent}"
         when "borders" || "border" || "bordering countries"
             puts "#{country.name} bordering countries:"
-            country.borders
+            country.borders.each do |border|
+                puts "#{border} - #{Country.find_by_alpha3code(border).name}"
+            end
+            puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
+            category_query(country_input)
         end
     end
 
@@ -96,7 +100,7 @@ class CLI
         sleep 0.5
         puts "What would you like to know about #{country.name}?"
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
-        category = info_display(country)
+        info_display(country)
     end
     
 end
