@@ -8,8 +8,8 @@ require_relative './country.rb'
 class APIRequest
     
     def request
-        # CURRENT URL: requests info for every country with 'united' in the name -- will switch to 'all' later
-        url = 'https://restcountries.eu/rest/v2/name/united'
+        # CURRENT URL: requests info for every country
+        url = 'https://restcountries.eu/rest/v2/all'
 
 
         uri = URI.parse(url)

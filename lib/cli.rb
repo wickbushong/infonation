@@ -82,6 +82,7 @@ class CLI
             puts "#{country.continent}"
         when "borders" || "border" || "bordering countries"
             puts "#{country.name} bordering countries:"
+            binding.pry
             country.borders.each do |border|
                 puts "#{border} - #{Country.find_by_alpha3code(border).name}"
             end
