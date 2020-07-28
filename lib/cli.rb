@@ -15,15 +15,11 @@ class CLI
     end
     
     def run
-        puts "If you would like to explore a country's information, enter that country's name (you can also use a 3 letter code)..."
+        puts "If you would like to explore a country's information, enter that country's name (you can also use a 3 letter country code)..."
         puts "If you would like to see a list of available countries enter 'list all'..."
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
-        puts "What would you like to know about #{country.name}?"
-        sleep 0.5
-        puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
-        binding.pry
-        category = category_input(country)
+        category_query(country)
     end
 
     def country_input
@@ -58,7 +54,7 @@ class CLI
         end
     end
 
-    def category_input(country)
+    def info_display(country)
         input = gets.chomp.downcase
         case input
         when "all info"
@@ -84,6 +80,9 @@ class CLI
         when "continent" || "landmass" || "land mass"
             puts "#{country.name} continent:"
             puts "#{country.continent}"
+        when "borders" || "border" || "bordering countries"
+            puts "#{country.name} bordering countries:"
+            country.borders
         end
     end
 
@@ -93,8 +92,11 @@ class CLI
         end
     end
 
-    def display_info(country, category)
-        puts "#{country.category}"
+    def category_query(country)
+        sleep 0.5
+        puts "What would you like to know about #{country.name}?"
+        puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
+        category = info_display(country)
     end
     
 end
