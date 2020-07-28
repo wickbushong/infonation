@@ -1,11 +1,11 @@
 require 'pry'
 
 class Country
-    # what other categories do I want to make available? --->> :alpha2code
+    # what other categories do I want to make available? --->> :head_of_state
     attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings, :demonym, :gini_index, :timezones, :native_name, :flag
     @@all = []
 
-    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area=nil, continent=nil, borders=nil, lat_lng=nil, alt_spellings=nil, demonym=nil, gini_index=nil, timezones=nil, native_name=nil, flag=nil)
+    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area="N/A", continent=nil, borders=nil, lat_lng=nil, alt_spellings=nil, demonym=nil, gini_index=nil, timezones=nil, native_name=nil, flag=nil)
         @name = name
         @capital = capital
         # @currencies is set to an array of strings that contain the currency name, code, and symbol 
