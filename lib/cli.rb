@@ -19,10 +19,10 @@ class CLI
         puts "If you would like to see a list of available countries enter 'list all'..."
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
-        binding.pry
         puts "What would you like to know about #{country.name}?"
         sleep 0.5
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
+        binding.pry
         category = category_input(country)
     end
 
@@ -40,7 +40,6 @@ class CLI
         else
             search_countries(input)
         end
-    
     end
 
     def search_countries(input)
@@ -57,18 +56,34 @@ class CLI
             puts "Enter a name from the list above, or enter 'start over'..."
             country_input
         end
-        
     end
 
     def category_input(country)
-        input = gets.chomp
+        input = gets.chomp.downcase
         case input
         when "all info"
             # display all info
         when "capital" || "capital city"
-            dislpay_info(country, capital)
+            puts "#{country.name} capital:"
+            puts "#{country.capital}"
         when "currencies" || "currency"
+            puts "#{country.name} currencies:"
             puts "#{country.currencies}"
+        when "population" || "pop"
+            puts "#{country.name} population:"
+            puts "#{country.population}"
+        when "language" || "languages"
+            puts "#{country.name} languages:"
+            puts "#{country.languages}"
+        when "alpha3code" || "country code" || "alpha 3 code" || "code"
+            puts "#{country.name} alpha-3-code:"
+            puts "#{country.alpha3code}"
+        when "area" || "size"
+            puts "#{country.name} area:"
+            puts "#{country.area}"
+        when "continent" || "landmass" || "land mass"
+            puts "#{country.name} continent:"
+            puts "#{country.continent}"
         end
     end
 
@@ -78,9 +93,8 @@ class CLI
         end
     end
 
-    def dislpay_info(country, category)
-        puts "#{country.name}"
-        puts "#{category}: #{country.category}"
+    def display_info(country, category)
+        puts "#{country.category}"
     end
     
 end
