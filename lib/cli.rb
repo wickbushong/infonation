@@ -21,13 +21,13 @@ class CLI
         country = country_input
         puts "What would you like to know about #{country.name}?"
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all'..."
-        
+        category = category_input
     end
 
     def country_input
         input = gets.chomp
         if input.downcase == "list all"
-            Country.list_all
+            list_all
             puts "Enter a name from the list above..."
             country_input
         elsif input.downcase == "start over"
@@ -57,8 +57,15 @@ class CLI
         end
     end
 
-    def display_country(name)
+    def category_input
+        input = gets.chomp
 
+    end
+
+    def list_all
+        Country.all.each do |country|
+            puts "#{country.name}"
+        end
     end
     
 end

@@ -68,12 +68,6 @@ class Country
             country.alpha3code == code.upcase
         end
     end
-
-    def self.list_all
-        all.each do |country|
-            puts "#{country.name}"
-        end
-    end
     
     def self.display_info(country)
 
