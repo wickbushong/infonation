@@ -1,11 +1,11 @@
 require 'pry'
 
 class Country
-    # what other categories do I want to make available? --->> :demonym, :gini_index, :timezones, :alpha2code, :alt_spellings
-    attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng
+    # what other categories do I want to make available? --->> :demonym, :gini_index, :timezones, :alpha2code
+    attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings
     @@all = []
 
-    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area=nil, continent=nil, borders=nil, lat_lng=nil)
+    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area=nil, continent=nil, borders=nil, lat_lng=nil, alt_spellings=nil)
         @name = name
         @capital = capital
         # @currencies is set to an array of strings that contain the currency name, code, and symbol 
@@ -23,6 +23,7 @@ class Country
         @continent = continent
         @borders = borders
         @lat_lng = lat_lng
+        @alt_spellings = alt_spellings
         @@all << self
     end
 
@@ -42,19 +43,22 @@ class Country
             obj["area"],
             obj["subregion"],
             obj["borders"],
-            obj["latlng"]
+            obj["latlng"],
+            obj["altSpellings"]
         )
     end
 
+    # this will be used for finding Countries -- thinking of implementing alternate spellings
     def self.find_by_name(arg)
         self.all.find do |country|
-            country.name == arg
+            country.name.upcase == arg.upcase || country.alt_spellings.upcase == arg.upcase
         end
     end
 
+    # this will come into play when traversing borders through the CLI
     def self.find_by_alpha3code(code)
         self.all.find do |country|
-            country.alpha3code == code
+            country.alpha3code == code.upcase
         end
     end
 
