@@ -19,6 +19,7 @@ class CLI
         puts "If you would like to see a list of available countries enter 'list all'..."
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
+        binding.pry
         puts "What would you like to know about #{country.name}?"
         sleep 0.5
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
@@ -39,7 +40,7 @@ class CLI
         else
             search_countries(input)
         end
-        puts "/////////////////////////////////////////////"
+    
     end
 
     def search_countries(input)
@@ -56,6 +57,7 @@ class CLI
             puts "Enter a name from the list above, or enter 'start over'..."
             country_input
         end
+        
     end
 
     def category_input(country)
@@ -63,10 +65,10 @@ class CLI
         case input
         when "all info"
             # display all info
-        when "capital"
-            country.capital
+        when "capital" || "capital city"
+            dislpay_info(country, capital)
         when "currencies" || "currency"
-            country.currencies
+            puts "#{country.currencies}"
         end
     end
 
@@ -77,11 +79,14 @@ class CLI
     end
 
     def dislpay_info(country, category)
+        puts "#{country.name}"
         puts "#{category}: #{country.category}"
     end
     
 end
 
 cli = CLI.new
+cli.run
 
-binding.pry
+
+
