@@ -20,6 +20,7 @@ class CLI
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
         puts "What would you like to know about #{country.name}?"
+        sleep 0.5
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
         category = category_input
     end
@@ -69,7 +70,7 @@ class CLI
     end
 
     def dislpay_info(country, category)
-        
+        puts "#{country.category}"
     end
     
 end
