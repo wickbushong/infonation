@@ -48,10 +48,17 @@ class Country
         )
     end
 
-    # this will be used for finding Countries -- thinking of implementing alternate spellings
+    # this will be used for finding Countries -- thinking of implementing .include? rather than == to lead to a list of relevant countries
     def self.find_by_name(arg)
         self.all.find do |country|
-            country.name.upcase == arg.upcase || country.alt_spellings.upcase == arg.upcase
+            country.name.upcase == arg.upcase || country.alt_spellings.upcase == arg.upcase || country.alpha3Code == arg.upcase
+        end
+    end
+
+    # find matches returns an array of Country instances that match the search term
+    def self.find_matches(arg)
+        self.all.select do |country|    
+            country.name.upcase.include?(arg.upcase) || country.alt_spellings.upcase.include?(arg.upcase) || country.alpha3Code.include?(arg.upcase)
         end
     end
 
@@ -60,6 +67,10 @@ class Country
         self.all.find do |country|
             country.alpha3code == code.upcase
         end
+    end
+
+    def self.display_all(name)
+
     end
 
 end
