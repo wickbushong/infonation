@@ -22,7 +22,7 @@ class CLI
         puts "What would you like to know about #{country.name}?"
         sleep 0.5
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
-        category = category_input
+        category = category_input(country)
     end
 
     def country_input
@@ -58,9 +58,16 @@ class CLI
         end
     end
 
-    def category_input
+    def category_input(country)
         input = gets.chomp
-        # build out if statements for category inputs
+        case input
+        when "all info"
+            # display all info
+        when "capital"
+            country.capital
+        when "currencies" || "currency"
+            country.currencies
+        end
     end
 
     def list_all
@@ -70,7 +77,7 @@ class CLI
     end
 
     def dislpay_info(country, category)
-        puts "#{country.category}"
+        puts "#{category}: #{country.category}"
     end
     
 end
