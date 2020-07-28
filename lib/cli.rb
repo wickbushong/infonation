@@ -20,7 +20,7 @@ class CLI
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
         puts "What would you like to know about #{country.name}?"
-        puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all'..."
+        puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
         category = category_input
     end
 
@@ -59,13 +59,17 @@ class CLI
 
     def category_input
         input = gets.chomp
-
+        # build out if statements for category inputs
     end
 
     def list_all
         Country.all.each do |country|
             puts "#{country.name}"
         end
+    end
+
+    def dislpay_info(country, category)
+        
     end
     
 end
