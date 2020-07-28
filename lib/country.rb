@@ -1,11 +1,11 @@
 require 'pry'
 
 class Country
-    # what other categories do I want to make available? --->> :demonym, :gini_index, :timezones, :alpha2code
-    attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings
+    # what other categories do I want to make available? --->> :timezones, :alpha2code
+    attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings, :demonym, :gini_index
     @@all = []
 
-    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area=nil, continent=nil, borders=nil, lat_lng=nil, alt_spellings=nil)
+    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area=nil, continent=nil, borders=nil, lat_lng=nil, alt_spellings=nil, demonym=nil, gini_index=nil)
         @name = name
         @capital = capital
         # @currencies is set to an array of strings that contain the currency name, code, and symbol 
@@ -24,6 +24,10 @@ class Country
         @borders = borders
         @lat_lng = lat_lng
         @alt_spellings = alt_spellings
+        @demonym = demonym
+        @gini_index = gini_index
+        
+        
         @@all << self
     end
 
@@ -44,7 +48,9 @@ class Country
             obj["subregion"],
             obj["borders"],
             obj["latlng"],
-            obj["altSpellings"]
+            obj["altSpellings"],
+            obj["demonym"],
+            obj["gini"]
         )
     end
 
