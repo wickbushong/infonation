@@ -33,7 +33,4 @@ class APIRequest
     end
 end
 
-united = APIRequest.new.make_countries
 
-
-binding.pry
