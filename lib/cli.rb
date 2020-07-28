@@ -95,7 +95,21 @@ class CLI
             else
                 category_query(search_countries(new_input))
             end
-            
+        when "coordinates", "GPS", "latitude", "longitude", "latitude and longitude"
+            puts "#{country.name}"
+            puts "latitude: #{country.lat_lng[0]}, longitude: #{country.lat_lng[1]}"
+        when "alternative spelling", "spellings"
+            puts "#{country.name} alternative spellings:"
+            country.alt_spellings.each do |sp|
+                puts "#{sp}"
+            end
+        when "demonym"
+            puts "#{country.name} demonym:"
+            puts "#{country.demonym}"
+        when "gini", "gini index"
+            puts "#{country.name} Gini index:"
+            puts "#{country.gini_index}"
+            puts "The Gini index measures income inequality on a scale from 0-100. Read more about it here: https://en.wikipedia.org/wiki/Gini_coefficient"
         end
     end
 

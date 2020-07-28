@@ -22,7 +22,7 @@ class Country
         @area = "#{area} km^2"
         @continent = continent
         @borders = borders
-        @lat_lng = "latitude: #{lat_lng[0]}, longitude: #{lat_lng[1]}"
+        @lat_lng = lat_lng
         @alt_spellings = alt_spellings
         @demonym = demonym
         @gini_index = gini_index
