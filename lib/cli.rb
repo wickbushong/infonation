@@ -23,14 +23,17 @@ class CLI
     end
 
     def country_input
-        input = gets.chomp
-        if input.downcase == "list all"
+        input = gets.chomp.downcase
+        case input
+        when "list all", "list", "all"
             list_all
             puts "Enter a name from the list above..."
             country_input
-        elsif input.downcase == "start over"
+        when "start over"
             run
-        elsif input.downcase == "exit"
+        when "no"
+            country
+        when "exit"
             puts "K bye!"
             # insert exit function??
         else
@@ -82,12 +85,17 @@ class CLI
             puts "#{country.continent}"
         when "borders", "border", "bordering countries"
             puts "#{country.name} bordering countries:"
-            binding.pry
             country.borders.each do |border|
                 puts "#{border} - #{Country.find_by_alpha3code(border).name}"
             end
             puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
-            category_query(country_input)
+            new_input = gets.chomp.downcase
+            if new_input == "no" || new_input == "n"
+                category_query(country)
+            else
+                category_query(search_countries(new_input))
+            end
+            
         end
     end
 
@@ -101,6 +109,7 @@ class CLI
         sleep 0.5
         puts "What would you like to know about #{country.name}?"
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
+        puts "/////////////////////////////////////////////"
         info_display(country)
     end
     
