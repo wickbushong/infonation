@@ -13,7 +13,6 @@ class CLI
     def greeting
         puts "------------Welcome to Infonation------------"
         puts "/////////////////////////////////////////////"
-        sleep 1
     end
     
     def run
@@ -38,7 +37,11 @@ class CLI
         when "start over"
             run
         when "no"
-            country
+            if defined?(country)
+                country
+            else
+                run
+            end
         when "exit"
             abort "K bye!"
         else

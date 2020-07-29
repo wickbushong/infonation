@@ -18,7 +18,7 @@ module Display
     end
 
     def display_population(country)
-
+        
     end
 
     def display_language(country)

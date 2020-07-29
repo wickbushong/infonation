@@ -52,7 +52,6 @@ class APIRequest
             }
             
             Country.new(country_hash)
-            binding.pry
         end
     end
 
