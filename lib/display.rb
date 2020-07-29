@@ -2,6 +2,7 @@
 module Display
 
     # TODO: make N/A outputs for each display
+    # TODO: check for existence of :demonym for relevant diplay methods (currencies, demonym, timezones, native_name)
 
     def display_capital(country)
         puts "#{country.name}'s capital city is: #{country.capital}"
@@ -83,19 +84,30 @@ module Display
     end
 
     def display_demonym(country)
-        
+        # TODO: check that the country has a demonym
+        puts "The #{country.demonym} demonym is: #{country.demonym}"
     end
 
     def display_gini(country)
-        
+        puts "#{country.name} Gini index:"
+            puts "#{country.gini_index}"
+            puts "The Gini index measures income inequality on a scale from 0-100. Read more about it here: https://en.wikipedia.org/wiki/Gini_coefficient"
+            sleep 1
     end
 
     def display_timezone(country)
-        
+        if country.timezones.length == 1
+            puts "The #{country.demonym} timezone is #{country.timezones.first}"
+        else
+            puts "#{country.name} spans multiple timezones. They are as follows:"
+            country.timezones.each do |zone|
+                puts "#{zone}"
+            end
+        end
     end
 
     def display_native_name(country)
-        
+        puts "The #{country.demonym} native name is '#{country.native_name}'"
     end
 
     def display_flag(country)

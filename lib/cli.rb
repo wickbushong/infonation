@@ -101,21 +101,13 @@ class CLI
         when "alternative spelling", "spellings", "spelling"
             display_alt_spellings(country)
         when "demonym"
-            puts "#{country.name} demonym:"
-            puts "#{country.demonym}"
-        when "gini", "gini index"
-            puts "#{country.name} Gini index:"
-            puts "#{country.gini_index}"
-            puts "The Gini index measures income inequality on a scale from 0-100. Read more about it here: https://en.wikipedia.org/wiki/Gini_coefficient"
-            sleep 1
+            display_demonym(country)
+        when "gini", "gini index", "inequality"
+            display_gini(country)
         when "timezone", "timezones", "time"
-            puts "#{country.demonym} timezones:"
-            country.timezones.each do |zone|
-                puts "#{zone}"
-            end
+            display_timezone(country)
         when "native name", "local name"
-            puts "#{country.demonym}s call #{country.name}:"
-            puts "#{country.native_name}"
+            display_native_name(country)
         when "flag", "banner"
             puts "#{country.demonym} flag:"
             puts "Visit: #{country.flag}"
