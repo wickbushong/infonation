@@ -1,7 +1,7 @@
 require 'pry'
 
 class Country
-    # what other categories do I want to make available? --->> :head_of_state
+    # TODO: what other categories do I want to make available? --->> :head_of_state, :gdp, :sub_region
     attr_accessor :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings, :demonym, :gini_index, :timezones, :native_name, :flag
     @@all = []
 

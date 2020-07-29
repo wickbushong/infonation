@@ -15,6 +15,8 @@ class CLI
         puts "/////////////////////////////////////////////"
     end
     
+
+    # TODO: add option to list countries by entering a continent name?
     def run
         puts "/////////////////////////////////////////////"
         puts "If you would like to explore a country's information, enter that country's name (you can also use a 3 letter country code)..."
@@ -85,18 +87,9 @@ class CLI
         when "population", "pop"
             display_population(country)
         when "language", "languages"
-            if country.languages.length == 1
-                puts "#{country.name} language:"
-                puts "#{country.languages.first}"
-            else
-                puts "#{country.name} languages:"
-                country.languages.each_with_index do |language, i|
-                    puts "#{i+1}. #{language}"
-                end
-            end
+            display_language(country)
         when "alpha3code", "country code", "alpha 3 code", "code"
-            puts "#{country.name} alpha-3-code:"
-            puts "#{country.alpha3code}"
+            display_alpha3code(country)
         when "area", "size"
             display_area(country)
         when "continent", "landmass", "land mass"

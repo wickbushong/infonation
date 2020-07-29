@@ -29,6 +29,7 @@ class APIRequest
     def make_countries
         to_json.each do |obj|
             country_hash = {
+                # TODO: refactor name to filter out and reformat parantheses, etc.
                 name: obj["name"],
                 capital: obj["capital"],
                 # :currencies is set to an array of strings that contain the currency name, code, and symbol 
@@ -39,8 +40,8 @@ class APIRequest
                 languages: obj["languages"].collect {|language| "#{language["name"]}"},
                 alpha3code: obj["alpha3Code"],
                 area: obj["area"],
-                # change continent assigner to obj["region"] ???
-                continent: obj["subregion"],
+                # TODO: add subregion attribute?
+                continent: "#{obj["region"]}, #{obj["subregion"]}",
                 borders: obj["borders"],
                 lat_lng: obj["latlng"],
                 alt_spellings: obj["altSpellings"],
@@ -58,6 +59,4 @@ class APIRequest
 
 end
 
-
-APIRequest.new.make_countries
 

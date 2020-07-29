@@ -32,7 +32,8 @@ module Display
     end
 
     def display_alpha3code(country)
-        
+        puts "#{country.name} alpha-3-code:"
+        puts "#{country.alpha3code}"
     end
 
     def display_area(country)
