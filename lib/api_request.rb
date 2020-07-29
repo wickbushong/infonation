@@ -31,12 +31,15 @@ class APIRequest
             country_hash = {
                 name: obj["name"],
                 capital: obj["capital"],
+                # :currencies is set to an array of strings that contain the currency name, code, and symbol 
                 currencies: obj["currencies"].collect {|currency|
                     "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"},
                 population: obj["population"],
+                # :languages is set to an array of strings of language names
                 languages: obj["languages"].collect {|language| "#{language["name"]}"},
                 alpha3code: obj["alpha3Code"],
-                area: "#{obj["area"]} km^2, #{obj["area"].to_f/2.59} mi^2",
+                area: obj["area"],
+                # change continent assigner to obj["region"] ???
                 continent: obj["subregion"],
                 borders: obj["borders"],
                 lat_lng: obj["latlng"],

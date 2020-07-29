@@ -5,59 +5,29 @@ class Country
     attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings, :demonym, :gini_index, :timezones, :native_name, :flag
     @@all = []
 
-    def initialize(name=nil, capital=nil, currencies=nil, population=nil, languages=nil, alpha3code=nil, area="N/A", continent=nil, borders=nil, lat_lng=nil, alt_spellings=nil, demonym=nil, gini_index=nil, timezones=nil, native_name=nil, flag=nil)
-        @name = name
-        @capital = capital
-        # @currencies is set to an array of strings that contain the currency name, code, and symbol 
-        @currencies = currencies.collect do |currency|
-            "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"
-        end
-        @population = population
-        # @languages is set to an array of strings of language names
-        @languages = languages.collect do |language|
-            "#{language["name"]}"
-        end
-        @alpha3code = alpha3code
-        # exclude units of km^2 ?
-        @area = "#{area} km^2"
-        @continent = continent
-        @borders = borders
-        @lat_lng = lat_lng
-        @alt_spellings = alt_spellings
-        @demonym = demonym
-        @gini_index = gini_index
-        @timezones = timezones
-        @native_name = native_name
-        @flag = flag
-        
+    def initialize(hash)
+        @name = hash[:name]
+        @capital = hash[:capital]
+        @currencies = hash[:currencies]
+        @population = hash[:population]
+        @languages = hash[:languages]
+        @alpha3code = hash[:alpha3code]
+        @area = hash[:area]
+        @continent = hash[:continent]
+        @borders = hash[:borders]
+        @lat_lng = hash[:lat_lng]
+        @alt_spellings = hash[:alt_spellings]
+        @demonym = hash[:demonym]
+        @gini_index = hash[:gini_index]
+        @timezones = hash[:timezones]
+        @native_name = hash[:native_name]
+        @flag = hash[:flag]
         
         @@all << self
     end
 
     def self.all
         @@all
-    end
-
-    # .new_from_json assigns countries attributes using the attribute notation in the json object --- Country.new renames some of these attributes (subregion=continent, latlng=lat_lng)
-    def self.new_from_json(obj)
-        self.new(
-            obj["name"],
-            obj["capital"],
-            obj["currencies"],
-            obj["population"],
-            obj["languages"],
-            obj["alpha3Code"],
-            obj["area"],
-            obj["subregion"],
-            obj["borders"],
-            obj["latlng"],
-            obj["altSpellings"],
-            obj["demonym"],
-            obj["gini"],
-            obj["timezones"],
-            obj["nativeName"],
-            obj["flag"]
-        )
     end
 
     # this will be used for finding Countries -- thinking of implementing .include? rather than == to lead to a list of relevant countries
