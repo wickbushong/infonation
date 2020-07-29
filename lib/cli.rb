@@ -15,8 +15,11 @@ class CLI
     end
     
     def run
+        puts "/////////////////////////////////////////////"
         puts "If you would like to explore a country's information, enter that country's name (you can also use a 3 letter country code)..."
+        sleep 0.5
         puts "If you would like to see a list of available countries enter 'list all'..."
+        sleep 0.5
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
         category_query(country)
@@ -27,6 +30,7 @@ class CLI
         case input
         when "list all", "list", "all"
             list_all
+            puts "/////////////////////////////////////////////"
             puts "Enter a name from the list above..."
             country_input
         when "start over"
@@ -43,6 +47,7 @@ class CLI
     def search_countries(input)
         matches = Country.find_matches(input)
         if matches.length == 1
+            puts "/////////////////////////////////////////////"
             puts "Found:"
             puts "#{matches.first.name}"
             matches.first
@@ -70,37 +75,56 @@ class CLI
             puts "#{country.name} capital:"
             puts "#{country.capital}"
         when "currencies", "currency"
-            puts "#{country.name} currencies:"
-            puts "#{country.currencies}"
+            if country.currencies.length == 1
+                puts "#{country.name} currency:"
+                puts "#{country.currencies.first}"
+            else
+                puts "#{country.name} currencies:"
+                country.currencies.each_with_index do |currency, i|
+                    puts "#{i+1}. #{currency}"
+                end
+            end
         when "population", "pop"
             puts "#{country.name} population:"
-            puts "#{country.population}"
+            puts "#{country.population} people"
         when "language", "languages"
-            puts "#{country.name} languages:"
-            puts "#{country.languages}"
+            if country.languages.length == 1
+                puts "#{country.name} language:"
+                puts "#{country.languages.first}"
+            else
+                puts "#{country.name} languages:"
+                country.languages.each_with_index do |language, i|
+                    puts "#{i+1}. #{language}"
+                end
+            end
         when "alpha3code", "country code", "alpha 3 code", "code"
             puts "#{country.name} alpha-3-code:"
             puts "#{country.alpha3code}"
         when "area", "size"
+            # maybe add square miles as well?
             puts "#{country.name} area:"
             puts "#{country.area}"
         when "continent", "landmass", "land mass"
             puts "#{country.name} continent:"
-            puts "#{country.continent}"
+            puts "#{country.name} is situated in #{country.continent}"
         when "borders", "border", "bordering countries"
-            puts "#{country.name} bordering countries:"
-            country.borders.each do |border|
-                puts "#{border} - #{Country.find_by_alpha3code(border).name}"
-            end
-            puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
-            new_input = gets.chomp.downcase
-            if new_input == "no" || new_input == "n"
-                category_query(country)
+            if country.borders != nil
+                puts "#{country.name} borderingshares borders with the following countries:"
+                country.borders.each do |border|
+                    puts "#{border} - #{Country.find_by_alpha3code(border).name}"
+                end
+                puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
+                new_input = gets.chomp.downcase
+                if new_input == "no" || new_input == "n"
+                    category_query(country)
+                else
+                    category_query(search_countries(new_input))
+                end
             else
-                category_query(search_countries(new_input))
-            end
-        when "coordinates", "GPS", "latitude", "longitude", "latitude and longitude"
-            puts "#{country.name}"
+                puts "No listed borders available for #{country.name}"
+
+        when "coordinates", "gps", "latitude", "longitude", "latitude and longitude"
+            puts "#{country.name} geographic coordinates:"
             puts "latitude: #{country.lat_lng[0]}, longitude: #{country.lat_lng[1]}"
         when "alternative spelling", "spellings"
             puts "#{country.name} alternative spellings:"
@@ -114,17 +138,20 @@ class CLI
             puts "#{country.name} Gini index:"
             puts "#{country.gini_index}"
             puts "The Gini index measures income inequality on a scale from 0-100. Read more about it here: https://en.wikipedia.org/wiki/Gini_coefficient"
+            sleep 1
         when "timezone", "timezones", "time"
-            puts "#{country.name} timezones:"
+            puts "#{country.demonym} timezones:"
             country.timezones.each do |zone|
                 puts "#{zone}"
             end
         when "native name", "local name"
-            puts "#{country.name} native name:"
+            puts "#{country.demonym}s call #{country.name}:"
             puts "#{country.native_name}"
         when "flag", "banner"
-            puts "#{country.name} flag:"
+            puts "#{country.demonym} flag:"
             puts "Visit: #{country.flag}"
+        else
+            puts "Invalid input. Try again..."
         end
         sleep 1
         puts "/////////////////////////////////////////////"
