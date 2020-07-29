@@ -27,7 +27,7 @@ class APIRequest
     end
 
     def make_countries
-        to_json.each do |country|
+        to_json.each do |obj|
             country_hash = {
                 name: obj["name"],
                 capital: obj["capital"],
@@ -37,16 +37,17 @@ class APIRequest
                 languages: obj["languages"].collect {|language| "#{language["name"]}"},
                 alpha3code: obj["alpha3Code"],
                 area: "#{obj["area"]} km^2, #{obj["area"].to_f/2.59} mi^2",
-                obj["subregion"],
-                obj["borders"],
-                obj["latlng"],
-                obj["altSpellings"],
-                obj["demonym"],
-                obj["gini"],
-                obj["timezones"],
-                obj["nativeName"],
-                obj["flag"]
+                continent: obj["subregion"],
+                borders: obj["borders"],
+                lat_lng: obj["latlng"],
+                alt_spellings: obj["altSpellings"],
+                demonym: obj["demonym"],
+                gini: obj["gini"],
+                timezones: obj["timezones"],
+                native_name: obj["nativeName"],
+                flag: obj["flag"]
             }
+            binding.pry
             Country.new(country_hash)
         end
     end

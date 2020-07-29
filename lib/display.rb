@@ -30,7 +30,8 @@ module Display
     end
 
     def display_area(country)
-        
+        puts "#{country.name} area:"
+        puts "#{country.area} km^2, #{country.area.to_f/2.59.round(1)} mi^2"
     end
 
     def display_continent(country)

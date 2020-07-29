@@ -94,9 +94,7 @@ class CLI
             puts "#{country.name} alpha-3-code:"
             puts "#{country.alpha3code}"
         when "area", "size"
-            # maybe add square miles as well?
-            puts "#{country.name} area:"
-            puts "#{country.area}"
+            display_area(country)
         when "continent", "landmass", "land mass"
             puts "#{country.name} continent:"
             puts "#{country.name} is situated in #{country.continent}"
