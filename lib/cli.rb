@@ -34,8 +34,7 @@ class CLI
         when "no"
             country
         when "exit"
-            puts "K bye!"
-            # insert exit function??
+            abort "K bye!"
         else
             search_countries(input)
         end
@@ -60,6 +59,8 @@ class CLI
     def info_display(country)
         input = gets.chomp.downcase
         case input
+        when "exit"
+            abort "K bye!"
         when "all info"
             # display all info
         when "capital", "capital city"
@@ -110,6 +111,14 @@ class CLI
             puts "#{country.name} Gini index:"
             puts "#{country.gini_index}"
             puts "The Gini index measures income inequality on a scale from 0-100. Read more about it here: https://en.wikipedia.org/wiki/Gini_coefficient"
+        when "timezone", "timezones", "time"
+            puts "#{country.name} timezones:"
+            country.timezones.each do |zone|
+                puts "#{zone}"
+            end
+        when "native name", "local name"
+            puts "#{country.name} native name:"
+            puts "#{country.native_name}"
         end
     end
 
@@ -130,6 +139,7 @@ class CLI
 end
 
 cli = CLI.new
+cli.greeting
 cli.run
 
 

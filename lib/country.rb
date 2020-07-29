@@ -74,15 +74,11 @@ class Country
         end
     end
 
-    # this will come into play when traversing borders through the CLI
+    # this comes into play when traversing borders through the CLI
     def self.find_by_alpha3code(code)
         self.all.find do |country|
             country.alpha3code == code.upcase
         end
-    end
-    
-    def self.display_info(country)
-
     end
 
 end
