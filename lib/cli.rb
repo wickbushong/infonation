@@ -61,6 +61,9 @@ class CLI
         case input
         when "exit"
             abort "K bye!"
+        when "menu"
+            greeting
+            run
         when "all info"
             # display all info
         when "capital", "capital city"
@@ -119,7 +122,13 @@ class CLI
         when "native name", "local name"
             puts "#{country.name} native name:"
             puts "#{country.native_name}"
+        when "flag", "banner"
+            puts "#{country.name} flag:"
+            puts "Visit: #{country.flag}"
         end
+        sleep 1
+        puts "/////////////////////////////////////////////"
+        category_query(country)
     end
 
     def list_all
@@ -132,6 +141,7 @@ class CLI
         sleep 0.5
         puts "What would you like to know about #{country.name}?"
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
+        puts "To return to the main menu enter 'menu'..."
         puts "/////////////////////////////////////////////"
         info_display(country)
     end
