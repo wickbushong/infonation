@@ -122,6 +122,7 @@ class CLI
                 end
             else
                 puts "No listed borders available for #{country.name}"
+            end
 
         when "coordinates", "gps", "latitude", "longitude", "latitude and longitude"
             puts "#{country.name} geographic coordinates:"
