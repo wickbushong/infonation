@@ -2,11 +2,20 @@
 module Display
 
     def display_capital(country)
-
+        puts "#{country.name} capital:"
+        puts "#{country.capital}"
     end
 
     def display_currencies(country)
-
+        if country.currencies.length == 1
+            puts "#{country.demonym} currency:"
+            puts "#{country.currencies.first}"
+        else
+            puts "#{country.name} currencies:"
+            country.currencies.each_with_index do |currency, i|
+                puts "#{i+1}. #{currency}"
+            end
+        end
     end
 
     def display_population(country)
@@ -62,5 +71,7 @@ module Display
     end
 
     def display_all(country)
+    
+    end
     
 end

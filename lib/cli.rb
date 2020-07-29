@@ -1,8 +1,10 @@
 require 'pry'
 require_relative './api_request.rb'
 require_relative './country.rb'
+require_relative './display.rb'
 
 class CLI
+    include Display
 
     def initialize
         APIRequest.new.make_countries
@@ -64,7 +66,7 @@ class CLI
     def info_display(country)
         input = gets.chomp.downcase
         case input
-        when "exit"
+        when "exit", "exit!"
             abort "K bye!"
         when "menu"
             greeting
@@ -72,18 +74,9 @@ class CLI
         when "all info"
             # display all info
         when "capital", "capital city"
-            puts "#{country.name} capital:"
-            puts "#{country.capital}"
+            display_capital(country)
         when "currencies", "currency"
-            if country.currencies.length == 1
-                puts "#{country.name} currency:"
-                puts "#{country.currencies.first}"
-            else
-                puts "#{country.name} currencies:"
-                country.currencies.each_with_index do |currency, i|
-                    puts "#{i+1}. #{currency}"
-                end
-            end
+            display_currencies(country)
         when "population", "pop"
             puts "#{country.name} population:"
             puts "#{country.population} people"
