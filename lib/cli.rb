@@ -94,23 +94,8 @@ class CLI
             display_area(country)
         when "continent", "landmass", "land mass", "region", "subregion"
             display_continent(country)
-        when "borders", "border", "bordering countries"
-            if country.borders != nil
-                puts "#{country.name} borderingshares borders with the following countries:"
-                country.borders.each do |border|
-                    puts "#{border} - #{Country.find_by_alpha3code(border).name}"
-                end
-                puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
-                new_input = gets.chomp.downcase
-                if new_input == "no" || new_input == "n"
-                    category_query(country)
-                else
-                    category_query(search_countries(new_input))
-                end
-            else
-                puts "No listed borders available for #{country.name}"
-            end
-
+        when "borders", "border", "bordering countries", "neighbors", "neighboring countries"
+            display_borders(country)
         when "coordinates", "gps", "latitude", "longitude", "latitude and longitude"
             puts "#{country.name} geographic coordinates:"
             puts "latitude: #{country.lat_lng[0]}, longitude: #{country.lat_lng[1]}"

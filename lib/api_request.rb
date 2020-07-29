@@ -43,7 +43,8 @@ class APIRequest
                 region: obj["region"],
                 sub_region: obj["subregion"]
                 borders: obj["borders"],
-                lat_lng: obj["latlng"],
+                lat: obj["latlng"][0].to_s,
+                lng: obj["latlng"][1].to_s,
                 alt_spellings: obj["altSpellings"],
                 demonym: obj["demonym"],
                 gini_index: obj["gini"],

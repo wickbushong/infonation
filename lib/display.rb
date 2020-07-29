@@ -46,7 +46,21 @@ module Display
     end
 
     def display_borders(country)
-        
+        if country.borders != nil
+            puts "#{country.name} shares a border with:"
+            country.borders.each do |border|
+                puts "#{border} - #{Country.find_by_alpha3code(border).name}"
+            end
+            puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
+            new_input = gets.chomp.downcase
+            if new_input == "no" || new_input == "n"
+                category_query(country)
+            else
+                category_query(search_countries(new_input))
+            end
+        else
+            puts "No listed borders available for #{country.name}"
+        end
     end
 
     def display_lat_lng(country)
