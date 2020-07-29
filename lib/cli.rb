@@ -79,7 +79,7 @@ class CLI
             greeting
             run
         when "all info"
-            # display all info
+            display_all(country)
         when "capital", "capital city"
             display_capital(country)
         when "currencies", "currency"
@@ -109,8 +109,9 @@ class CLI
         when "native name", "local name"
             display_native_name(country)
         when "flag", "banner"
-            puts "#{country.demonym} flag:"
-            puts "Visit: #{country.flag}"
+            display_flag(country)
+        when "domain", "top level domain", "domain code", "top level domain code"
+            display_domain(country)
         else
             puts "Invalid input. Try again..."
         end
@@ -139,6 +140,8 @@ end
 cli = CLI.new
 cli.greeting
 cli.run
+
+
 
 
 

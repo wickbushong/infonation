@@ -1,8 +1,7 @@
 
 module Display
-
+    @@categories = ["Name", "Alpha 3 Code", "Capital", "Currencies", "Population", "Languages", "Area", "Landmass", "Subcontinent", "Borders", "Latitude", "Longitude", "Alternative Spellings", "Demonym", "Gini Index", "Timezone", "Native Name", "Flag"]
     # TODO: make N/A outputs for each display
-    # TODO: check for existence of :demonym for relevant diplay methods (currencies, demonym, timezones, native_name)
 
     def display_capital(country)
         puts "#{country.name}'s capital city is: #{country.capital}"
@@ -10,9 +9,9 @@ module Display
 
     def display_currencies(country)
         if country.currencies.length == 1
-            puts "#{country.demonym} currency:"
-            puts "#{country.currencies.first}"
+            puts "The #{country.demonym} currency is the #{country.currencies.first}"
         else
+            # TODO: rewrite to read naturally
             puts "#{country.name} currencies:"
             country.currencies.each_with_index {|currency, i| puts "#{i+1}. #{currency}" }
         end
@@ -111,11 +110,15 @@ module Display
     end
 
     def display_flag(country)
+        puts "To see the #{country.demonym} flag, visit: #{country.flag}"
+    end
+
+    def display_domain(country)
         
     end
 
     def display_all(country)
-    
+        
     end
     
 end
