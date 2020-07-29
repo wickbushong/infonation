@@ -40,8 +40,8 @@ class APIRequest
                 languages: obj["languages"].collect {|language| "#{language["name"]}"},
                 alpha3code: obj["alpha3Code"],
                 area: obj["area"],
-                # TODO: add subregion attribute?
-                continent: "#{obj["region"]}, #{obj["subregion"]}",
+                region: obj["region"],
+                sub_region: obj["subregion"]
                 borders: obj["borders"],
                 lat_lng: obj["latlng"],
                 alt_spellings: obj["altSpellings"],

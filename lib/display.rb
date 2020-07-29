@@ -42,7 +42,7 @@ module Display
     end
 
     def display_continent(country)
-        
+        puts "#{country.name} is situated in #{country.sub_region} (a subcontinent of #{country.region})."
     end
 
     def display_borders(country)

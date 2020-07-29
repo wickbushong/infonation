@@ -92,9 +92,8 @@ class CLI
             display_alpha3code(country)
         when "area", "size"
             display_area(country)
-        when "continent", "landmass", "land mass"
-            puts "#{country.name} continent:"
-            puts "#{country.name} is situated in #{country.continent}"
+        when "continent", "landmass", "land mass", "region", "subregion"
+            display_continent(country)
         when "borders", "border", "bordering countries"
             if country.borders != nil
                 puts "#{country.name} borderingshares borders with the following countries:"
