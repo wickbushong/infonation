@@ -28,6 +28,7 @@ class CLI
 
     def country_input
         input = gets.chomp.downcase
+        puts "/////////////////////////////////////////////"
         case input
         when "list all", "list", "all"
             list_all
@@ -42,7 +43,7 @@ class CLI
             else
                 run
             end
-        when "exit"
+        when "exit", "exit!"
             abort "K bye!"
         else
             search_countries(input)
@@ -51,8 +52,8 @@ class CLI
 
     def search_countries(input)
         matches = Country.find_matches(input)
+        puts "/////////////////////////////////////////////"
         if matches.length == 1
-            puts "/////////////////////////////////////////////"
             puts "Found:"
             puts "#{matches.first.name}"
             matches.first
@@ -68,6 +69,7 @@ class CLI
 
     def info_display(country)
         input = gets.chomp.downcase
+        
         case input
         when "exit", "exit!"
             abort "K bye!"
@@ -81,8 +83,7 @@ class CLI
         when "currencies", "currency"
             display_currencies(country)
         when "population", "pop"
-            puts "#{country.name} population:"
-            puts "#{country.population} people"
+            display_population(country)
         when "language", "languages"
             if country.languages.length == 1
                 puts "#{country.name} language:"

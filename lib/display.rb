@@ -11,18 +11,24 @@ module Display
             puts "#{country.currencies.first}"
         else
             puts "#{country.name} currencies:"
-            country.currencies.each_with_index do |currency, i|
-                puts "#{i+1}. #{currency}"
-            end
+            country.currencies.each_with_index {|currency, i| puts "#{i+1}. #{currency}" }
         end
     end
 
     def display_population(country)
-        
+        puts "#{country.name} population:"
+        puts "#{country.population} people"
     end
 
     def display_language(country)
-        
+        if country.languages.length == 1
+            puts "The primary language spoken in #{country.name} is #{country.languages.first}"
+        else
+            puts "There are #{country.languages.length} languages commonly spoken in #{country.name}. They are as follows:"
+            country.languages.each_with_index do |language, i|
+                puts "#{i+1}. #{language}"
+            end
+        end
     end
 
     def display_alpha3code(country)
