@@ -50,12 +50,13 @@ class APIRequest
                 gini_index: obj["gini"],
                 timezones: obj["timezones"],
                 native_name: obj["nativeName"],
-                flag: obj["flag"]
+                flag: obj["flag"],
                 domain: obj["topLevelDomain"]
             }
             
             Country.new(country_hash)
         end
+        binding.pry
     end
 
 

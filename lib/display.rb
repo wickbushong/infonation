@@ -27,9 +27,7 @@ module Display
             puts "The primary language spoken in #{country.name} is #{country.languages.first}"
         else
             puts "There are #{country.languages.length} languages commonly spoken in #{country.name}. They are as follows:"
-            country.languages.each_with_index do |language, i|
-                puts "#{i+1}. #{language}"
-            end
+            country.languages.each_with_index {|language, i| puts "#{i+1}. #{language}"}
         end
     end
 
@@ -50,9 +48,7 @@ module Display
     def display_borders(country)
         if country.borders != nil
             puts "#{country.name} shares a border with:"
-            country.borders.each do |border|
-                puts "#{border} - #{Country.find_by_alpha3code(border).name}"
-            end
+            country.borders.each {|border| puts "#{border} - #{Country.find_by_alpha3code(border).name}"}
             puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
             new_input = gets.chomp.downcase
             if new_input == "no" || new_input == "n"
@@ -76,9 +72,7 @@ module Display
             puts "#{country.name} is also sometimes spelled: #{country.alt_spellings.first}"
         elsif country.alt_spellings.length > 1
             puts "There are a few ways to spell #{country.name}. Here are some alternative spellings:"
-            country.alt_spellings.each do |sp|
-                puts "#{sp}"
-            end
+            country.alt_spellings.each {|sp| puts "#{sp}"}
         end
     end
 
@@ -99,9 +93,7 @@ module Display
             puts "The #{country.demonym} timezone is #{country.timezones.first}"
         else
             puts "#{country.name} spans multiple timezones. They are as follows:"
-            country.timezones.each do |zone|
-                puts "#{zone}"
-            end
+            country.timezones.each {|zone| puts "#{zone}"}
         end
     end
 
@@ -114,7 +106,12 @@ module Display
     end
 
     def display_domain(country)
-        
+        if country.domain.length > 1
+            puts "#{country.name} has a few country code top-level domains. They are as follows:"
+            country.domain.each_with_index {|domain, i| puts "#{i+1}. #{domain}"}
+        else
+            puts "The #{country.demonym} country code top-level domain is #{country.domain}"
+        end
     end
 
     def display_all(country)
