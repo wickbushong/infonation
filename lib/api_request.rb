@@ -36,7 +36,7 @@ class APIRequest
                 population: obj["population"],
                 languages: obj["languages"].collect {|language| "#{language["name"]}"},
                 alpha3code: obj["alpha3Code"],
-                area: "#{obj["area"]} km^2",
+                area: "#{obj["area"]} km^2, #{obj["area"].to_f/2.59} mi^2",
                 obj["subregion"],
                 obj["borders"],
                 obj["latlng"],
