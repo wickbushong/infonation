@@ -1,6 +1,8 @@
 
 module Display
 
+    # TODO: make N/A outputs for each display
+
     def display_capital(country)
         puts "#{country.name}'s capital city is: #{country.capital}"
     end
@@ -16,7 +18,7 @@ module Display
     end
 
     def display_population(country)
-        puts "#{country.name} population:"
+        puts "#{country.name} current population:"
         puts "#{country.population} people"
     end
 
@@ -64,11 +66,20 @@ module Display
     end
 
     def display_lat_lng(country)
-        
+        puts "#{country.name} geographic coordinates:"
+        puts "latitude: #{country.lat}, longitude: #{country.lng}"
+        puts "Check it out on Google Maps here: https://maps.google.com/?q=#{country.lat},#{country.lng}"
     end
 
     def display_alt_spellings(country)
-        
+        if country.alt_spellings.length == 1
+            puts "#{country.name} is also sometimes spelled: #{country.alt_spellings.first}"
+        elsif country.alt_spellings.length > 1
+            puts "There are a few ways to spell #{country.name}. Here are some alternative spellings:"
+            country.alt_spellings.each do |sp|
+                puts "#{sp}"
+            end
+        end
     end
 
     def display_demonym(country)

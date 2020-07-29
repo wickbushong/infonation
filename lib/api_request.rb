@@ -41,10 +41,10 @@ class APIRequest
                 alpha3code: obj["alpha3Code"],
                 area: obj["area"],
                 region: obj["region"],
-                sub_region: obj["subregion"]
+                sub_region: obj["subregion"],
                 borders: obj["borders"],
-                lat: obj["latlng"][0].to_s,
-                lng: obj["latlng"][1].to_s,
+                lat: obj["latlng"][0],
+                lng: obj["latlng"][1],
                 alt_spellings: obj["altSpellings"],
                 demonym: obj["demonym"],
                 gini_index: obj["gini"],

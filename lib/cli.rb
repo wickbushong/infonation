@@ -96,14 +96,10 @@ class CLI
             display_continent(country)
         when "borders", "border", "bordering countries", "neighbors", "neighboring countries"
             display_borders(country)
-        when "coordinates", "gps", "latitude", "longitude", "latitude and longitude"
-            puts "#{country.name} geographic coordinates:"
-            puts "latitude: #{country.lat_lng[0]}, longitude: #{country.lat_lng[1]}"
-        when "alternative spelling", "spellings"
-            puts "#{country.name} alternative spellings:"
-            country.alt_spellings.each do |sp|
-                puts "#{sp}"
-            end
+        when "coordinates", "gps", "latitude", "longitude", "latitude and longitude", "location"
+            display_lat_lng(country)
+        when "alternative spelling", "spellings", "spelling"
+            display_alt_spellings(country)
         when "demonym"
             puts "#{country.name} demonym:"
             puts "#{country.demonym}"
