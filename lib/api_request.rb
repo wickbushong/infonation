@@ -51,7 +51,8 @@ class APIRequest
                 timezones: obj["timezones"],
                 native_name: obj["nativeName"],
                 flag: obj["flag"],
-                domain: obj["topLevelDomain"]
+                domain: obj["topLevelDomain"],
+                calling_codes: obj["callingCodes"]
             }
             
             Country.new(country_hash)

@@ -110,7 +110,16 @@ module Display
             puts "#{country.name} has a few country code top-level domains. They are as follows:"
             country.domain.each_with_index {|domain, i| puts "#{i+1}. #{domain}"}
         else
-            puts "The #{country.demonym} country code top-level domain is #{country.domain}"
+            puts "The #{country.demonym} country code top-level domain is #{country.domain.first}"
+        end
+    end
+
+    def display_calling_codes(country)
+        if country.calling_codes.length > 1
+            puts "#{country.name} has a few calling codes. They are as follows:"
+            country.calling_codes.each_with_index {|code, i| puts "#{i+1}. +#{code}"}
+        else
+            puts "The #{country.demonym} calling code domain is #{country.calling_codes.first}"
         end
     end
 

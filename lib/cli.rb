@@ -112,6 +112,8 @@ class CLI
             display_flag(country)
         when "domain", "top level domain", "domain code", "top level domain code"
             display_domain(country)
+        when "phone code", "calling code", "area code", "dial code", "dialing code"
+            display_calling_codes(country)
         else
             puts "Invalid input. Try again..."
         end
