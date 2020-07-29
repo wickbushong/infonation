@@ -2,8 +2,7 @@
 module Display
 
     def display_capital(country)
-        puts "#{country.name} capital:"
-        puts "#{country.capital}"
+        puts "#{country.name}'s capital city is: #{country.capital}"
     end
 
     def display_currencies(country)

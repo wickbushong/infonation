@@ -28,9 +28,32 @@ class APIRequest
 
     def make_countries
         to_json.each do |country|
-            Country.new_from_json(country)
+            country_hash = {
+                name: obj["name"],
+                capital: obj["capital"],
+                currencies: obj["currencies"].collect {|currency|
+                    "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"},
+                population: obj["population"],
+                languages: obj["languages"].collect {|language| "#{language["name"]}"},
+                alpha3code: obj["alpha3Code"],
+                area: "#{obj["area"]} km^2",
+                obj["subregion"],
+                obj["borders"],
+                obj["latlng"],
+                obj["altSpellings"],
+                obj["demonym"],
+                obj["gini"],
+                obj["timezones"],
+                obj["nativeName"],
+                obj["flag"]
+            }
+            Country.new(country_hash)
         end
     end
+
+
 end
 
+
+APIRequest.new.make_countries
 
