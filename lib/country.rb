@@ -2,27 +2,12 @@ require 'pry'
 
 class Country
     # what other categories do I want to make available? --->> :head_of_state
-    attr_reader :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings, :demonym, :gini_index, :timezones, :native_name, :flag
+    attr_accessor :name, :capital, :currencies, :population, :languages, :alpha3code, :area, :continent, :borders, :lat_lng, :alt_spellings, :demonym, :gini_index, :timezones, :native_name, :flag
     @@all = []
 
     def initialize(hash)
-        @name = hash[:name]
-        @capital = hash[:capital]
-        @currencies = hash[:currencies]
-        @population = hash[:population]
-        @languages = hash[:languages]
-        @alpha3code = hash[:alpha3code]
-        @area = hash[:area]
-        @continent = hash[:continent]
-        @borders = hash[:borders]
-        @lat_lng = hash[:lat_lng]
-        @alt_spellings = hash[:alt_spellings]
-        @demonym = hash[:demonym]
-        @gini_index = hash[:gini_index]
-        @timezones = hash[:timezones]
-        @native_name = hash[:native_name]
-        @flag = hash[:flag]
-        
+        hash.each {|key, value| self.send(("#{key}="), value)}
+
         @@all << self
     end
 

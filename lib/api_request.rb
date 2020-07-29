@@ -45,13 +45,14 @@ class APIRequest
                 lat_lng: obj["latlng"],
                 alt_spellings: obj["altSpellings"],
                 demonym: obj["demonym"],
-                gini: obj["gini"],
+                gini_index: obj["gini"],
                 timezones: obj["timezones"],
                 native_name: obj["nativeName"],
                 flag: obj["flag"]
             }
-            binding.pry
+            
             Country.new(country_hash)
+            binding.pry
         end
     end
 
