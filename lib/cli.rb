@@ -30,7 +30,7 @@ class CLI
         puts "/////////////////////////////////////////////"
         input = gets.chomp.downcase
         if input.split(" ").any?{|word| word.match?(/[\d\W]/)}
-            puts "Invalid input. Digits and symbols not allowed. Try again..."
+            puts "Invalid input. Digits and special characters are not allowed. Try again..."
             country_input
         else
             case input
@@ -47,7 +47,7 @@ class CLI
                 else
                     run
                 end
-            when "exit"
+            when "exit", "esc"
                 abort "K bye!"
             else
                 search_countries(input)
@@ -61,6 +61,7 @@ class CLI
         if matches.length == 1
             puts "Found:"
             puts "#{matches.first.name}"
+            puts "/////////////////////////////////////////////"
             matches.first
         elsif matches.length > 1
             puts "Found:"
@@ -68,6 +69,9 @@ class CLI
                 puts "#{country.name}"
             end
             puts "Enter a name from the list above, or enter 'start over'..."
+            country_input
+        elsif matches.length == 0
+            puts "No countries found. Try again..."
             country_input
         end
     end
