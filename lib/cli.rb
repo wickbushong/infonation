@@ -20,9 +20,7 @@ class CLI
     def run
         puts "/////////////////////////////////////////////"
         puts "If you would like to explore a country's information, enter that country's name (you can also use a 3 letter country code)..."
-        sleep 0.5
         puts "If you would like to see a list of available countries enter 'list all'..."
-        sleep 0.5
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input
         category_query(country)
@@ -78,7 +76,7 @@ class CLI
         when "menu"
             greeting
             run
-        when "all info"
+        when "all info", "all"
             display_all(country)
         when "capital", "capital city"
             display_capital(country)
@@ -129,7 +127,7 @@ class CLI
     end
 
     def category_query(country)
-        sleep 0.5
+    
         puts "What would you like to know about #{country.name}?"
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
         puts "To return to the main menu enter 'menu'..."
@@ -139,9 +137,6 @@ class CLI
     
 end
 
-cli = CLI.new
-cli.greeting
-cli.run
 
 
 

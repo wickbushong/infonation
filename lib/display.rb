@@ -51,13 +51,14 @@ module Display
             country.borders.each {|border| puts "#{border} - #{Country.find_by_alpha3code(border).name}"}
             puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
             new_input = gets.chomp.downcase
+            # TODO: invalid input for non-border countries
             if new_input == "no" || new_input == "n"
                 category_query(country)
             else
                 category_query(search_countries(new_input))
             end
         else
-            puts "No listed borders available for #{country.name}"
+            puts "No listed bordering nations available for #{country.name}"
         end
     end
 
@@ -77,7 +78,6 @@ module Display
     end
 
     def display_demonym(country)
-        # TODO: check that the country has a demonym
         puts "The #{country.demonym} demonym is: #{country.demonym}"
     end
 
@@ -92,13 +92,13 @@ module Display
         if country.timezones.length == 1
             puts "The #{country.demonym} timezone is #{country.timezones.first}"
         else
-            puts "#{country.name} spans multiple timezones. They are as follows:"
+            puts "#{country.name} spans these timezones:"
             country.timezones.each {|zone| puts "#{zone}"}
         end
     end
 
     def display_native_name(country)
-        puts "The #{country.demonym} native name is '#{country.native_name}'"
+        puts "The native name of #{country.name} is '#{country.native_name}'"
     end
 
     def display_flag(country)
@@ -124,7 +124,26 @@ module Display
     end
 
     def display_all(country)
-        
+        puts "Name: "; 
+        puts "Alpha 3 Code: "; 
+        puts "Capital: "; 
+        puts "Currencies: "; 
+        puts "Population: "; 
+        puts "Languages: "; 
+        puts "Area: "; 
+        puts "Continent: "; 
+        puts "Subcontinent: "; 
+        puts "Bordering Nations: "; 
+        puts "Latitude: "; 
+        puts "Longitude: "; 
+        puts "Alternative Spellings: "; 
+        puts "Demonym: "; 
+        puts "Gini Index: "; 
+        puts "Timezone: "; 
+        puts "Native Name: "; 
+        puts "Flag: "; 
+        puts "Top-level Domain: "; 
+        puts "Calling Codes: "; 
     end
     
 end
