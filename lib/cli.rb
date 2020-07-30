@@ -27,26 +27,31 @@ class CLI
     end
 
     def country_input
-        input = gets.chomp.downcase
         puts "/////////////////////////////////////////////"
-        case input
-        when "list all", "list", "all"
-            list_all
-            puts "/////////////////////////////////////////////"
-            puts "Enter a name from the list above..."
+        input = gets.chomp.downcase
+        if input.split(" ").any?{|word| word.match?(/[\d\W]/)}
+            puts "Invalid input. Digits and symbols not allowed. Try again..."
             country_input
-        when "start over"
-            run
-        when "no"
-            if defined?(country)
-                country
-            else
-                run
-            end
-        when "exit", "exit!"
-            abort "K bye!"
         else
-            search_countries(input)
+            case input
+            when "list all", "list", "all"
+                list_all
+                puts "/////////////////////////////////////////////"
+                puts "Enter a name from the list above..."
+                country_input
+            when "start over"
+                run
+            when "no"
+                if defined?(country)
+                    country
+                else
+                    run
+                end
+            when "exit"
+                abort "K bye!"
+            else
+                search_countries(input)
+            end
         end
     end
 
@@ -76,7 +81,7 @@ class CLI
         when "menu"
             greeting
             run
-        when "all info", "all"
+        when "all info", "all", "list", "list all"
             display_all(country)
         when "capital", "capital city"
             display_capital(country)

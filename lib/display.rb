@@ -38,7 +38,7 @@ module Display
 
     def display_area(country)
         puts "#{country.name} area:"
-        puts "#{country.area} km^2, #{country.area.to_f/2.59.round(1)} mi^2"
+        puts "#{country.area} km^2, #{(country.area.to_f/2.59).round(1)} mi^2"
     end
 
     def display_continent(country)
@@ -127,26 +127,23 @@ module Display
         puts "Name: #{country.name}"
         puts "Alpha 3 Code: #{country.alpha3code}"
         puts "Capital: #{country.capital}"
-        puts "Currencies: "; country.currencies.each_with_index {|c, i| if i == country.currencies.length - 1; print "#{c}"; else; print "#{c}, ";end}
+        print "Currencies: "; country.currencies.each_with_index {|c, i| if i == country.currencies.length - 1; puts "#{c}"; else; print "#{c}, ";end}
         puts "Population: #{country.population} people"
-        puts "Languages: "; country.languages.each_with_index {|l, i| if i == country.languages.length - 1; print "#{l}"; else; print "#{l}, ";end}
-        puts "Area: #{country.area} km^2, #{country.area.to_f/2.59.round(1)} mi^2"
+        print "Languages: "; country.languages.each_with_index {|l, i| if i == country.languages.length - 1; puts "#{l}"; else; print "#{l}, ";end}
+        puts "Area: #{country.area} km^2, #{(country.area.to_f/2.59).round(1)} mi^2"
         puts "Continent: #{country.region}"
-        puts "Subcontinent: #{country.subregion}"
-        puts "Bordering Nations: "; country.borders.each_with_index {|b, i| if i == country.borders.length - 1; print "#{b}"; else; print "#{b}, ";end}
+        puts "Subcontinent: #{country.sub_region}"
+        print "Bordering Nations: "; country.borders.each_with_index {|b, i| if i == country.borders.length - 1; puts "#{b}"; else; print "#{b}, ";end}
         puts "Latitude: #{country.lat}"
         puts "Longitude: #{country.lng}"
-        puts "Alternative Spellings: "; country.alt_spellings.each_with_index {|sp, i| if i == country.alt_spellings.length - 1; print "#{sp}"; else; print "#{sp}, ";end}
+        print "Alternative Spellings: "; country.alt_spellings.each_with_index {|sp, i| if i == country.alt_spellings.length - 1; puts "#{sp}"; else; print "#{sp}, ";end}
         puts "Demonym: #{country.demonym}"
-        puts "Gini Index: #{country.gini}"
-        puts "Timezone: "; country.timezones.each_with_index {|t, i| if i == country.timezones.length - 1; print "#{t}"; else; print "#{t}, ";end}
+        puts "Gini Index: #{country.gini_index}"
+        print "Timezone: "; country.timezones.each_with_index {|t, i| if i == country.timezones.length - 1; puts "#{t}"; else; print "#{t}, ";end}
         puts "Native Name: #{country.native_name}"
         puts "Flag: #{country.flag}"
-        puts "Top-level Domain: "; country.domain.each_with_index {|d, i| if i == country.domain.length - 1; print "#{d}"; else; print "#{d}, ";end}
-        puts "Calling Codes: "; country.calling_codes.each_with_index {|c, i| if i == country.calling_codes.length - 1; print "#{c}"; else; print "#{c}, ";end}
+        print "Top-level Domain: "; country.domain.each_with_index {|d, i| if i == country.domain.length - 1; puts "#{d}"; else; print "#{d}, ";end}
+        print "Calling Codes: "; country.calling_codes.each_with_index {|c, i| if i == country.calling_codes.length - 1; puts "#{c}"; else; print "#{c}, ";end}
     end
     
-end
-if this == that
-
 end
