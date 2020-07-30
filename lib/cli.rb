@@ -11,7 +11,9 @@ class CLI
     end
     
     def greeting
-        puts "------------Welcome to Infonation------------"
+        puts "/////////////////////////////////////////////"
+        puts "/////////////////////////////////////////////"
+        puts "///---------Welcome to Infonation---------///"
         puts "/////////////////////////////////////////////"
     end
     
@@ -28,8 +30,9 @@ class CLI
 
     def country_input
         puts "/////////////////////////////////////////////"
+        print "Search: "
         input = gets.chomp.downcase
-        if input.split(" ").any?{|word| word.match?(/[124567890\W]/)}
+        if input.split(" ").any?{|word| word.match?(/[\d\W]/)}
             puts "Invalid input. Special characters are not allowed. Try again..."
             country_input
         else
@@ -77,12 +80,14 @@ class CLI
     end
 
     def info_display(country)
+        print "Search: "
         input = gets.chomp.downcase
-        
+    
         case input
         when "exit", "exit!"
             abort "K bye!"
         when "menu"
+            country.display_counter = 0
             greeting
             run
         when "all info", "all", "list", "list all"
@@ -135,7 +140,13 @@ class CLI
     end
 
     def category_query(country)
-        puts "What would you like to know about #{country.name}?"
+        sleep 1.5
+        puts "/////////////////////////////////////////////"
+        if country.display_counter == 0
+            puts "What would you like to know about #{country.name}?"
+        else
+            puts "What else would you like to know about #{country.name}?"
+        end
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
         puts "To return to the main menu enter 'menu'..."
         puts "/////////////////////////////////////////////"
