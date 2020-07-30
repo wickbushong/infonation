@@ -1,4 +1,4 @@
-require 'pry'
+
 
 class Country
     # TODO: what other categories do I want to make available? --->> :head_of_state, :gdp, :sub_region

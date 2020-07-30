@@ -1,7 +1,6 @@
 
 module Display
-    @@categories = ["Name", "Alpha 3 Code", "Capital", "Currencies", "Population", "Languages", "Area", "Landmass", "Subcontinent", "Borders", "Latitude", "Longitude", "Alternative Spellings", "Demonym", "Gini Index", "Timezone", "Native Name", "Flag"]
-    # TODO: make N/A outputs for each display
+    # TODO: make N/A outputs for each display?
 
     def display_capital(country)
         puts "#{country.name}'s capital city is: #{country.capital}"
@@ -13,15 +12,14 @@ module Display
             puts "The #{country.demonym} currency is the #{country.currencies.first}"
         else
             # TODO: rewrite to read naturally
-            puts "#{country.name} currencies:"
+            puts "There are a few currencies in use in #{country.name}. They are as follows:"
             country.currencies.each_with_index {|currency, i| puts "#{i+1}. #{currency}" }
         end
         country.display_counter += 1
     end
 
     def display_population(country)
-        puts "#{country.name} current population:"
-        puts "#{country.population} people"
+        puts "#{country.name} current population is #{country.population} people"
         country.display_counter += 1
     end
 
@@ -29,15 +27,14 @@ module Display
         if country.languages.length == 1
             puts "The primary language spoken in #{country.name} is #{country.languages.first}"
         else
-            puts "There are #{country.languages.length} languages commonly spoken in #{country.name}. They are as follows:"
+            puts "There are #{country.languages.length} languages commonly spoken in #{country.name}. They are:"
             country.languages.each_with_index {|language, i| puts "#{i+1}. #{language}"}
         end
         country.display_counter += 1
     end
 
     def display_alpha3code(country)
-        puts "#{country.name} alpha-3-code:"
-        puts "#{country.alpha3code}"
+        puts "The #{country.demonym} alpha-3-code is #{country.alpha3code}"
         country.display_counter += 1
     end
 
@@ -53,15 +50,17 @@ module Display
     end
 
     def display_borders(country)
-        if country.borders != nil
+        if country.borders.length >= 1
             puts "#{country.name} shares a border with:"
             country.borders.each {|border| puts "#{border} - #{Country.find_by_alpha3code(border).name}"}
             country.display_counter += 1
-            puts "Is there a border country you would like to know more about? If so, enter the country code or the country name. If not, enter 'no'..."
+            puts "Is there a border country you would like to know more about? If so, enter the country code listed above. If not, enter 'no'..."
             new_input = gets.chomp.downcase
             # TODO: invalid input for non-border countries
             if new_input == "no" || new_input == "n"
                 category_query(country)
+            elsif new_input == "exit"
+                abort "K bye!"
             else
                 category_query(search_countries(new_input))
             end

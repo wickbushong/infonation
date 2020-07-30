@@ -1,7 +1,4 @@
-require 'pry'
-require_relative './api_request.rb'
-require_relative './country.rb'
-require_relative './display.rb'
+
 
 class CLI
     include Display
@@ -64,7 +61,6 @@ class CLI
         if matches.length == 1
             puts "Found:"
             puts "#{matches.first.name}"
-            puts "/////////////////////////////////////////////"
             matches.first
         elsif matches.length > 1
             puts "Found:"
@@ -129,7 +125,6 @@ class CLI
         else
             puts "Invalid input. Try again..."
         end
-        puts "/////////////////////////////////////////////"
         category_query(country)
     end
 
@@ -154,9 +149,3 @@ class CLI
     end
     
 end
-
-
-
-
-
-

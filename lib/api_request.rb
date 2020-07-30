@@ -1,14 +1,12 @@
 require 'net/http'
 require 'open-uri'
 require 'json'
-require 'pry'
 
-require_relative './country.rb'
 
 class APIRequest
     
     def request
-        # CURRENT URL: requests info for every country
+        # URL: requests info for every country
         url = 'https://restcountries.eu/rest/v2/all'
 
 
@@ -61,3 +59,4 @@ class APIRequest
 
 
 end
+

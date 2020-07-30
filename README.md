@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To get set up fork and clone this repository then run ruby lib/run in your terminal/console once you have opened the directory that it's stored in. Once the app is up and running it will prompt the user with directions. The flow is pretty straightforward: You enter a country name, the app finds a corresponding country, or lists countries that are relevant to your search, then the app prompts you to ask for a specific category of information. The user can also ask to see all of the stored information for a country.
 
 ## Development
 
