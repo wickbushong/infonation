@@ -124,25 +124,25 @@ module Display
     end
 
     def display_all(country)
-        puts "Name: "; 
-        puts "Alpha 3 Code: "; 
-        puts "Capital: "; 
+        puts "Name: #{country.name}"
+        puts "Alpha 3 Code: #{country.alpha3code}"
+        puts "Capital: #{country.capital}"
         puts "Currencies: "; 
-        puts "Population: "; 
+        puts "Population: #{country.population} people"
         puts "Languages: "; 
-        puts "Area: "; 
-        puts "Continent: "; 
-        puts "Subcontinent: "; 
+        puts "Area: #{country.area} km^2, #{country.area.to_f/2.59.round(1)} mi^2"
+        puts "Continent: #{country.region}"
+        puts "Subcontinent: #{country.subregion}"
         puts "Bordering Nations: "; 
-        puts "Latitude: "; 
-        puts "Longitude: "; 
+        puts "Latitude: #{country.lat}"
+        puts "Longitude: #{country.lng}"
         puts "Alternative Spellings: "; 
-        puts "Demonym: "; 
-        puts "Gini Index: "; 
-        puts "Timezone: "; 
-        puts "Native Name: "; 
-        puts "Flag: "; 
-        puts "Top-level Domain: "; 
+        puts "Demonym: #{country.demonym}"
+        puts "Gini Index: #{country.gini}"
+        puts "Timezone: ";
+        puts "Native Name: #{country.native_name}"
+        puts "Flag: #{country.flag}"
+        puts "Top-level Domain: ";
         puts "Calling Codes: "; 
     end
     
