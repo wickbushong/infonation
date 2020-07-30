@@ -29,8 +29,8 @@ class CLI
     def country_input
         puts "/////////////////////////////////////////////"
         input = gets.chomp.downcase
-        if input.split(" ").any?{|word| word.match?(/[\d\W]/)}
-            puts "Invalid input. Digits and special characters are not allowed. Try again..."
+        if input.split(" ").any?{|word| word.match?(/[124567890\W]/)}
+            puts "Invalid input. Special characters are not allowed. Try again..."
             country_input
         else
             case input
@@ -99,7 +99,7 @@ class CLI
             display_alpha3code(country)
         when "area", "size"
             display_area(country)
-        when "continent", "landmass", "land mass", "region", "subregion"
+        when "continent", "landmass", "land mass", "region", "subregion", "subcontinent"
             display_continent(country)
         when "borders", "border", "bordering countries", "neighbors", "neighboring countries"
             display_borders(country)
@@ -124,7 +124,6 @@ class CLI
         else
             puts "Invalid input. Try again..."
         end
-        sleep 1
         puts "/////////////////////////////////////////////"
         category_query(country)
     end
@@ -136,7 +135,6 @@ class CLI
     end
 
     def category_query(country)
-    
         puts "What would you like to know about #{country.name}?"
         puts "Try: 'population', 'borders', or 'languages'. Alternatively, if you would like to see all of #{country.name}'s info enter 'all info'..."
         puts "To return to the main menu enter 'menu'..."
