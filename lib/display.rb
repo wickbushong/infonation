@@ -127,23 +127,26 @@ module Display
         puts "Name: #{country.name}"
         puts "Alpha 3 Code: #{country.alpha3code}"
         puts "Capital: #{country.capital}"
-        puts "Currencies: "; 
+        puts "Currencies: "; country.currencies.each_with_index {|c, i| if i == country.currencies.length - 1; print "#{c}"; else; print "#{c}, ";end}
         puts "Population: #{country.population} people"
-        puts "Languages: "; 
+        puts "Languages: "; country.languages.each_with_index {|l, i| if i == country.languages.length - 1; print "#{l}"; else; print "#{l}, ";end}
         puts "Area: #{country.area} km^2, #{country.area.to_f/2.59.round(1)} mi^2"
         puts "Continent: #{country.region}"
         puts "Subcontinent: #{country.subregion}"
-        puts "Bordering Nations: "; 
+        puts "Bordering Nations: "; country.borders.each_with_index {|b, i| if i == country.borders.length - 1; print "#{b}"; else; print "#{b}, ";end}
         puts "Latitude: #{country.lat}"
         puts "Longitude: #{country.lng}"
-        puts "Alternative Spellings: "; 
+        puts "Alternative Spellings: "; country.alt_spellings.each_with_index {|sp, i| if i == country.alt_spellings.length - 1; print "#{sp}"; else; print "#{sp}, ";end}
         puts "Demonym: #{country.demonym}"
         puts "Gini Index: #{country.gini}"
-        puts "Timezone: ";
+        puts "Timezone: "; country.timezones.each_with_index {|t, i| if i == country.timezones.length - 1; print "#{t}"; else; print "#{t}, ";end}
         puts "Native Name: #{country.native_name}"
         puts "Flag: #{country.flag}"
-        puts "Top-level Domain: ";
-        puts "Calling Codes: "; 
+        puts "Top-level Domain: "; country.domain.each_with_index {|d, i| if i == country.domain.length - 1; print "#{d}"; else; print "#{d}, ";end}
+        puts "Calling Codes: "; country.calling_codes.each_with_index {|c, i| if i == country.calling_codes.length - 1; print "#{c}"; else; print "#{c}, ";end}
     end
     
+end
+if this == that
+
 end
