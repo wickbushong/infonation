@@ -54,9 +54,14 @@ module Display
             country.display_counter += 1
             puts "Is there a border country you would like to know more about? If so, enter the country code listed above. If not, enter 'no'..."
             new_input = gets.chomp.downcase
-            # TODO: invalid input for non-border countries?
             if new_input == "no" || new_input == "n"
                 category_query(country)
+            # checks to see if the new_input actually is a listed border country
+            elsif country.borders.find{|c| c.downcase == new_input} == nil && new_input != "exit"
+                puts "#{new_input.upcase} is not a listed border of #{country.name}..."
+                puts "/////////////////////////////////////////////"
+                sleep 1
+                display_borders(country)
             elsif new_input == "exit"
                 abort "K bye!"
             else
@@ -100,7 +105,7 @@ module Display
 
     def display_timezone(country)
         if country.timezones.length == 1
-            puts "The #{country.demonym} timezone is #{country.timezones.first}"
+            puts "#{country.name} falls in the #{country.timezones.first} timezone."
         else
             puts "#{country.name} spans these timezones:"
             country.timezones.each {|zone| puts "#{zone}"}
@@ -114,7 +119,7 @@ module Display
     end
 
     def display_flag(country)
-        puts "To see the #{country.demonym} flag, visit: #{country.flag}"
+        puts "To see the #{country.name} flag, visit: #{country.flag}"
         country.display_counter += 1
     end
 
@@ -133,7 +138,7 @@ module Display
             puts "#{country.name} has a few calling codes. They are as follows:"
             country.calling_codes.each_with_index {|code, i| puts "#{i+1}. +#{code}"}
         else
-            puts "The #{country.demonym} calling code domain is #{country.calling_codes.first}"
+            puts "The #{country.name} calling code domain is #{country.calling_codes.first}"
         end
         country.display_counter += 1
     end
