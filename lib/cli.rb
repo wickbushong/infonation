@@ -63,14 +63,19 @@ class CLI
     def search_countries(input)
         matches = Country.find_matches(input)
         puts "/////////////////////////////////////////////"
-        if matches.length == 1
+        if input.length == 3 && matches.length > 1
+            match = Country.find_by_alpha3code(input)
+            puts "Found:"
+            puts "#{match.name}"
+            match
+        elsif matches.length == 1
             puts "Found:"
             puts "#{matches.first.name}"
             matches.first
         elsif matches.length > 1
             puts "Found:"
             matches.each do |country|
-                puts "#{country.name} - #{country.alpha3code}"
+                puts "#{country.alpha3code} - #{country.name}"
             end
             puts "Enter a country code from the list above, or enter 'start over'..."
             country_input
