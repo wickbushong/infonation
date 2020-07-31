@@ -20,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-To get set up fork and clone this repository then run ruby lib/run in your terminal/console once you have opened the directory that it's stored in. Once the app is up and running it will prompt the user with directions. The flow is pretty straightforward: You enter a country name, the app finds a corresponding country, or lists countries that are relevant to your search, then the app prompts you to ask for a specific category of information. The user can also ask to see all of the stored information for a country.
+To get set up fork and clone this repository then run ruby lib/run in your terminal/console once you have opened the directory that it's stored in. Once the app is up and running it will prompt the user with directions. The flow is pretty straightforward: You enter a country name, the app finds a corresponding country, or lists countries that are relevant to your search, then the app prompts you to ask for a specific category of information. The user can also ask to see all of the stored information for a country. The categories of information available through this app are as follows:
+name, capital, currencies, population, languages, alpha-3-code, area, region (continent), subregion (subcontinent), bordering nations, latitude, longitude, alternative spellings, demonym, Gini index, timezones, native name, flag, top-lelvel domain code, and calling codes
 
 ## Development
 

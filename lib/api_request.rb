@@ -12,7 +12,7 @@ class APIRequest
 
         uri = URI.parse(url)
 
-        #net/http sends the actual request to the RESTcountry API and receives the response
+        #net/http .get_response sends a data request to the RESTcountry API and receives the response
         response = Net::HTTP.get_response(uri)
 
         #returns data in raw form
@@ -40,6 +40,7 @@ class APIRequest
                 area: obj["area"],
                 region: obj["region"],
                 sub_region: obj["subregion"],
+                # :borders is set to an array of strings of border alpha3codes
                 borders: obj["borders"],
                 lat: obj["latlng"][0],
                 lng: obj["latlng"][1],

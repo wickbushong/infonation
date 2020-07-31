@@ -1,6 +1,5 @@
 
 module Display
-    # TODO: make N/A outputs for each display?
 
     def display_capital(country)
         puts "#{country.name}'s capital city is: #{country.capital}"
