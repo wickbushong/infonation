@@ -25,22 +25,27 @@ class CLI
         category_query(country)
     end
 
+    # .country_input takes in an input from the user and checks it for validity, then passes the input to .search_countries
     def country_input
         puts "/////////////////////////////////////////////"
         print "Search: "
         input = gets.chomp.downcase
+        # this regex checks for digits and non-word characters (except whitespace)
         if input.split(" ").any?{|word| word.match?(/[\d\W]/)}
-            puts "Invalid input. Special characters are not allowed. Try again..."
+            puts "Invalid input. Special characters and digits are not allowed. Try again..."
             country_input
         else
             case input
+                # .list_all provides a list of every country, then .country_input is called again
             when "list all", "list", "all"
                 list_all
                 puts "/////////////////////////////////////////////"
                 puts "Enter a name from the list above..."
                 country_input
+            # "start over" is used once a user is done exploring one country and wants to return to the start of the program
             when "start over"
                 run
+            # "no" is included for the .display_borders feature, from .display_borders users either enter a country code or "no" which brings them back to .run --- defined? is implemented in case a user inputs "no" before they have reached .display_borders
             when "no"
                 if defined?(country)
                     country
