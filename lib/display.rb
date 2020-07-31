@@ -140,6 +140,7 @@ module Display
     end
 
     def display_all(country)
+        puts "Here's all of the information on file for #{country.name}:"
         puts "Name: #{country.name}"
         puts "Alpha 3 Code: #{country.alpha3code}"
         puts "Capital: #{country.capital}"

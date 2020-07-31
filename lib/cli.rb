@@ -70,9 +70,9 @@ class CLI
         elsif matches.length > 1
             puts "Found:"
             matches.each do |country|
-                puts "#{country.name}"
+                puts "#{country.name} - #{country.alpha3code}"
             end
-            puts "Enter a name from the list above, or enter 'start over'..."
+            puts "Enter a country code from the list above, or enter 'start over'..."
             country_input
         elsif matches.length == 0
             puts "No countries found. Try again..."

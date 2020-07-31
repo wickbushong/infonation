@@ -19,7 +19,7 @@ class Country
     # .find_matches returns an array of Country instances that match the search term
     def self.find_matches(arg)
         self.all.select do |country|    
-            country.name.upcase == arg.upcase || country.alt_spellings.include?(arg.upcase) || country.alpha3code == arg.upcase
+            country.name.upcase.include?(arg.upcase) || country.alt_spellings.include?(arg.upcase) || country.alpha3code == arg.upcase
         end
     end
 
