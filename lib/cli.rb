@@ -18,7 +18,7 @@ class CLI
     # TODO: add option to list countries by entering a continent name?
     def run
         puts "/////////////////////////////////////////////"
-        puts "If you would like to explore a country's information, enter that country's name (you can also use a 3 letter country code)..."
+        puts "To check out some info about a country, enter that country's name (you can also use a 3 letter country code)..."
         puts "If you would like to see a list of available countries enter 'list all'..."
         puts "If you would like to exit the program enter 'exit'..."
         country = country_input

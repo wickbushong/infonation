@@ -16,17 +16,10 @@ class Country
         @@all
     end
 
-    # this will be used for finding Countries -- thinking of implementing .include? rather than == to lead to a list of relevant countries
-    def self.find_by_name(arg)
-        self.all.find do |country|
-            country.name.upcase == arg.upcase || country.alt_spellings.include?(arg.upcase) || country.alpha3Code == arg.upcase
-        end
-    end
-
-    # find matches returns an array of Country instances that match the search term
+    # .find_matches returns an array of Country instances that match the search term
     def self.find_matches(arg)
         self.all.select do |country|    
-            country.name.upcase.include?(arg.upcase) || country.alt_spellings.include?(arg.upcase) || country.alpha3code.include?(arg.upcase)
+            country.name.upcase == arg.upcase || country.alt_spellings.include?(arg.upcase) || country.alpha3code == arg.upcase
         end
     end
 

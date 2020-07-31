@@ -18,7 +18,7 @@ module Display
     end
 
     def display_population(country)
-        puts "#{country.name} current population is #{country.population} people"
+        puts "The current population of #{country.name} is #{country.population} people"
         country.display_counter += 1
     end
 
