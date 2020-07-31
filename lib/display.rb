@@ -10,7 +10,6 @@ module Display
         if country.currencies.length == 1
             puts "The #{country.demonym} currency is the #{country.currencies.first}"
         else
-            # TODO: rewrite to read naturally
             puts "There are a few currencies in use in #{country.name}. They are as follows:"
             country.currencies.each_with_index {|currency, i| puts "#{i+1}. #{currency}" }
         end
@@ -55,7 +54,7 @@ module Display
             country.display_counter += 1
             puts "Is there a border country you would like to know more about? If so, enter the country code listed above. If not, enter 'no'..."
             new_input = gets.chomp.downcase
-            # TODO: invalid input for non-border countries
+            # TODO: invalid input for non-border countries?
             if new_input == "no" || new_input == "n"
                 category_query(country)
             elsif new_input == "exit"
