@@ -2,9 +2,12 @@
 
 class CLI
     include Display
+    attr_accessor :display_counter
 
     def initialize
         APIRequest.new.make_countries
+
+        @display_counter = 0
     end
     
     def greeting
@@ -92,7 +95,7 @@ class CLI
     def category_query(country)
         sleep 1.5
         puts "/////////////////////////////////////////////"
-        if country.display_counter == 0
+        if self.display_counter == 0
             puts "What would you like to know about #{country.name}?"
         else
             puts "What else would you like to know about #{country.name}?"
@@ -111,7 +114,7 @@ class CLI
         when "exit", "exit!", "esc"
             abort "K bye!"
         when "menu"
-            country.display_counter = 0
+            self.display_counter = 0
             greeting
             run
         when "all info", "all", "list", "list all"

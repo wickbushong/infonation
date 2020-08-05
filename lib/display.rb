@@ -3,7 +3,7 @@ module Display
 
     def display_capital(country)
         puts "#{country.name}'s capital city is: #{country.capital}"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_currencies(country)
@@ -13,12 +13,12 @@ module Display
             puts "There are a few currencies in use in #{country.name}. They are as follows:"
             country.currencies.each_with_index {|currency, i| puts "#{i+1}. #{currency}" }
         end
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_population(country)
         puts "The current population of #{country.name} is #{country.population} people"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_language(country)
@@ -28,30 +28,30 @@ module Display
             puts "There are #{country.languages.length} languages commonly spoken in #{country.name}. They are:"
             country.languages.each_with_index {|language, i| puts "#{i+1}. #{language}"}
         end
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_alpha3code(country)
         puts "The #{country.demonym} alpha-3-code is #{country.alpha3code}"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_area(country)
         puts "#{country.name} area:"
         puts "#{country.area} km^2, #{(country.area.to_f/2.59).round(1)} mi^2"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_continent(country)
         puts "#{country.name} is situated in #{country.sub_region} (a subcontinent of #{country.region})."
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_borders(country)
         if country.borders.length >= 1
             puts "#{country.name} shares a border with:"
             country.borders.each {|border| puts "#{border} - #{Country.find_by_alpha3code(border).name}"}
-            country.display_counter += 1
+            self.display_counter += 1
             puts "Is there a border country you would like to know more about? If so, enter the country code listed above. If not, enter 'no'..."
             new_input = gets.chomp.downcase
             if new_input == "no" || new_input == "n"
@@ -69,7 +69,7 @@ module Display
             end
         else
             puts "No listed bordering nations available for #{country.name}"
-            country.display_counter += 1
+            self.display_counter += 1
         end
     end
 
@@ -77,7 +77,7 @@ module Display
         puts "#{country.name} geographic coordinates:"
         puts "latitude: #{country.lat}, longitude: #{country.lng}"
         puts "Check it out on Google Maps here: https://maps.google.com/?q=#{country.lat},#{country.lng}"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_alt_spellings(country)
@@ -87,19 +87,19 @@ module Display
             puts "There are a few ways to spell #{country.name}. Here are some alternative spellings:"
             country.alt_spellings.each {|sp| puts "#{sp}"}
         end
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_demonym(country)
         puts "The #{country.demonym} demonym is: #{country.demonym}"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_gini(country)
         puts "#{country.name} Gini index:"
             puts "#{country.gini_index}"
             puts "The Gini index measures income inequality on a scale from 0-100. Read more about it here: https://en.wikipedia.org/wiki/Gini_coefficient"
-            country.display_counter += 1
+            self.display_counter += 1
             sleep 1
     end
 
@@ -110,17 +110,17 @@ module Display
             puts "#{country.name} spans these timezones:"
             country.timezones.each {|zone| puts "#{zone}"}
         end
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_native_name(country)
         puts "The native name of #{country.name} is '#{country.native_name}'"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_flag(country)
         puts "To see the #{country.name} flag, visit: #{country.flag}"
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_domain(country)
@@ -130,7 +130,7 @@ module Display
         else
             puts "The #{country.demonym} country code top-level domain is #{country.domain.first}"
         end
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_calling_codes(country)
@@ -140,7 +140,7 @@ module Display
         else
             puts "The #{country.name} calling code domain is #{country.calling_codes.first}"
         end
-        country.display_counter += 1
+        self.display_counter += 1
     end
 
     def display_all(country)
@@ -165,7 +165,7 @@ module Display
         puts "Flag: #{country.flag}"
         print "Top-level Domain: "; country.domain.each_with_index {|d, i| if i == country.domain.length - 1; puts "#{d}"; else; print "#{d}, ";end}
         print "Calling Codes: "; country.calling_codes.each_with_index {|c, i| if i == country.calling_codes.length - 1; puts "#{c}"; else; print "#{c}, ";end}
-        country.display_counter += 1
+        self.display_counter += 1
     end
     
 end
