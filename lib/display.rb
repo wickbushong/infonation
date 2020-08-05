@@ -56,7 +56,6 @@ module Display
             new_input = gets.chomp.downcase
             if new_input == "no" || new_input == "n"
                 category_query(country)
-            # checks to see if the new_input actually is a listed border country
             elsif country.borders.find{|c| c.downcase == new_input} == nil && new_input != "exit"
                 puts "#{new_input.upcase} is not a listed border of #{country.name}..."
                 puts "/////////////////////////////////////////////"

@@ -27,7 +27,7 @@ class APIRequest
 
     def make_countries
         to_json.each do |obj|
-            # this handles country names that are formatted like: "Congo (Democratic Republic of the)", or "Tanzania, United Republic of"
+
             if obj["name"].match?(/[\(,]/)
                 arr = obj["name"].split(/\s\(|,\s/)
                 if arr[1].include?("of") || arr[1].include?("the")
@@ -39,17 +39,14 @@ class APIRequest
             country_hash = {
                 name: obj["name"],
                 capital: obj["capital"],
-                # :currencies is formatted as an array of strings that contains the currency name, code, and symbol 
                 currencies: obj["currencies"].collect {|currency|
                     "#{currency["name"]} (#{currency["code"]} / #{currency["symbol"]})"},
                 population: obj["population"],
-                # :languages is formatted as an array of strings of language names
                 languages: obj["languages"].collect {|language| "#{language["name"]}"},
                 alpha3code: obj["alpha3Code"],
                 area: obj["area"],
                 region: obj["region"],
                 sub_region: obj["subregion"],
-                # :borders is formatted as an array of strings of border alpha3codes
                 borders: obj["borders"],
                 lat: obj["latlng"][0],
                 lng: obj["latlng"][1],
