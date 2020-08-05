@@ -14,14 +14,12 @@ class Country
         @@all
     end
 
-    # .find_matches returns an array of Country instances that match the search term
     def self.find_matches(arg)
         self.all.select do |country|    
             country.name.upcase.include?(arg.upcase) || country.alt_spellings.include?(arg.upcase) || country.alpha3code == arg.upcase
         end
     end
 
-    # this comes into play when traversing borders through the CLI
     def self.find_by_alpha3code(code)
         self.all.find do |country|
             country.alpha3code == code.upcase
