@@ -26,4 +26,9 @@ class Country
         end
     end
 
+    def google_maps_link
+        formatted = self.name.gsub(" ", "+")
+        "https://www.google.com/maps/place/#{formatted}"
+    end
+
 end

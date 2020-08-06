@@ -75,7 +75,7 @@ module Display
     def display_lat_lng(country)
         puts "#{country.name} geographic coordinates:"
         puts "latitude: #{country.lat}, longitude: #{country.lng}"
-        puts "Check it out on Google Maps here: https://maps.google.com/?q=#{country.lat},#{country.lng}"
+        puts "Check it out on Google Maps here: #{country.google_maps_link}"
         self.display_counter += 1
     end
 
